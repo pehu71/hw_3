@@ -4,14 +4,6 @@ import json
 db_name = "movies.db"
 
 def _read_from_db_(query):
-    """
-    Connects to the SQLite database at db_name, executes the provided SQL query,
-    and returns the results as a list of tuples.
-
-    :param db_name: Path to the SQLite database file.
-    :param query: SQL query to be executed.
-    :return: List of tuples containing the query results.
-    """
     try:
         # Connect to the SQLite database
         conn = sqlite3.connect(db_name)
