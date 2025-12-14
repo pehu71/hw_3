@@ -1,0 +1,17 @@
+3rd HomeWork - DL 18.12. 2025
+- search in https://github.com/mikeleguedes/json-movie-list
+- pump the SQLite db by walking thru jsons and inserting them to db: https://realpython.com/get-all-files-in-directory-python/
+- use keller_main.py as the skeleton to build upon
+- use chatgpt chat https://chatgpt.com/c/6939fa2f-53c4-8332-8be9-91dd83a0f719
+- SQLLite in Python: https://docs.python.org/3/library/sqlite3.html
+
+SQLLite json where:
+
+SELECT * FROM employees
+WHERE json_extract(details, '$.age') > 28;
+
+LIKE search:
+https://www.sqlitetutorial.net/sqlite-like/
+
+langchain tool definitions:
+https://docs.langchain.com/oss/python/langchain/tools
