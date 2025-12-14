@@ -1,9 +1,9 @@
-import read_db
+from read_db import get_movie_by_actor, get_movie_by_title, get_movie_by_director, get_movie_by_year
 
-db_name = "movies.db"
+
 
 def main():
-    result = read_db.read_from_db(db_name, "select movie_json from movies where actors like '%travolta%'")
+    result = get_movie_by_actor("travolta")
     print(result)
 
 

@@ -1,26 +1,39 @@
 import sqlite3
+import json
 
-def read_from_db(db_path, query):
+db_name = "movies.db"
+
+def _read_from_db_(query):
     """
-    Connects to the SQLite database at db_path, executes the provided SQL query,
+    Connects to the SQLite database at db_name, executes the provided SQL query,
     and returns the results as a list of tuples.
 
-    :param db_path: Path to the SQLite database file.
+    :param db_name: Path to the SQLite database file.
     :param query: SQL query to be executed.
     :return: List of tuples containing the query results.
     """
     try:
         # Connect to the SQLite database
-        conn = sqlite3.connect(db_path)
+        conn = sqlite3.connect(db_name)
         cursor = conn.cursor()
 
         # Execute the provided SQL query
         cursor.execute(query)
 
         # Fetch all results from the executed query
-        results = cursor.fetchall()
+        rows = cursor.fetchall()
 
-        return results
+        json_array = []
+        for row in rows:
+            try:
+                if row[0]:
+                    json_obj = json.loads(row[0])
+                    json_array.append(json_obj)
+            except json.JSONDecodeError as e:
+                print(f"Error parsing JSON: {e}")
+                continue        
+
+        return json_array
 
     except sqlite3.Error as e:
         print(f"An error occurred: {e}")
@@ -30,3 +43,23 @@ def read_from_db(db_path, query):
         # Ensure the connection is closed
         if conn:
             conn.close()
+
+def get_movie_by_actor(actor_name):
+    db_name = "movies.db"
+    query = f"SELECT movie_json FROM movies WHERE actors LIKE '%{actor_name}%'"
+    return _read_from_db_(query)
+
+def get_movie_by_title(title):
+    db_name = "movies.db"
+    query = f"SELECT movie_json FROM movies WHERE name LIKE '%{title}%'"
+    return _read_from_db_(query)
+
+def get_movie_by_director(director_name):
+    db_name = "movies.db"
+    query = f"SELECT movie_json FROM movies WHERE director LIKE '%{director_name}%'"
+    return _read_from_db_(query)    
+
+def get_movie_by_year(year):
+    db_name = "movies.db"
+    query = f"SELECT movie_json FROM movies WHERE year = {year}"
+    return _read_from_db_(query)    
