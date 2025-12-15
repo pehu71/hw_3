@@ -10,12 +10,12 @@ The agent is explicitly instructed to use data from this database when talking w
 # Running the code
 
 ## API Key
-Please create an ````.env```` file and place your Open AI API Key there.
+Please create an `.env` file and place your Open AI API Key there.
 
 ## Run
-````bash````
+```bash
 uv sync
 uv run ./main.py
-````bash````
+```
 
 License MIT
