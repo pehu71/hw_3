@@ -58,5 +58,5 @@ def get_movies_by_year(year):
 
 def get_movies_by_genre(genre):
     db_name = "movies.db"
-    query = f"SELECT movie_json FROM movies WHERE genre LIKE '%{genre}%'"
+    query = f"SELECT movie_json FROM movies WHERE categories LIKE '%{genre}%'"
     return _read_from_db_(query)   
