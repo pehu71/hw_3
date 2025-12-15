@@ -1,8 +1,8 @@
-from read_db import get_movie_by_actor, get_movie_by_title, get_movie_by_director, get_movie_by_year
+from read_db import get_movies_by_actor, get_movies_by_title, get_movies_by_director, get_movies_by_year, get_movies_by_genre
 
 
 def main():
-    result = get_movie_by_actor("travolta")
+    result = get_movies_by_actor("travolta")
     print(result)
 
 

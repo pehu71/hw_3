@@ -36,22 +36,27 @@ def _read_from_db_(query):
         if conn:
             conn.close()
 
-def get_movie_by_actor(actor_name):
+def get_movies_by_actor(actor_name):
     db_name = "movies.db"
     query = f"SELECT movie_json FROM movies WHERE actors LIKE '%{actor_name}%'"
     return _read_from_db_(query)
 
-def get_movie_by_title(title):
+def get_movies_by_title(title):
     db_name = "movies.db"
     query = f"SELECT movie_json FROM movies WHERE name LIKE '%{title}%'"
     return _read_from_db_(query)
 
-def get_movie_by_director(director_name):
+def get_movies_by_director(director_name):
     db_name = "movies.db"
     query = f"SELECT movie_json FROM movies WHERE director LIKE '%{director_name}%'"
     return _read_from_db_(query)    
 
-def get_movie_by_year(year):
+def get_movies_by_year(year):
     db_name = "movies.db"
     query = f"SELECT movie_json FROM movies WHERE year = {year}"
-    return _read_from_db_(query)    
+    return _read_from_db_(query)
+
+def get_movies_by_genre(genre):
+    db_name = "movies.db"
+    query = f"SELECT movie_json FROM movies WHERE genre LIKE '%{genre}%'"
+    return _read_from_db_(query)   
